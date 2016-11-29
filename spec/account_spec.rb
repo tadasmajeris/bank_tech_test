@@ -20,6 +20,11 @@ describe Account do
       expect(transactions.length).to eq 1
       expect(transactions.last).to be_kind_of(Transaction)
     end
+
+    it 'throws an error of amount is not positive' do
+      expect { subject.deposit(-500) }.to raise_error 'Please specify a positive amount'
+      expect { subject.deposit(0) }.to raise_error 'Please specify a positive amount'
+    end
   end
 
   describe '#withdraw' do
@@ -37,6 +42,11 @@ describe Account do
 
     it 'throws an error when trying to withdraw more than the balance' do
       expect { subject.withdraw(1001) }.to raise_error 'Insufficient funds. Current balance: 1000'
+    end
+
+    it 'throws an error of amount is not positive' do
+      expect { subject.withdraw(-500) }.to raise_error 'Please specify a positive amount'
+      expect { subject.withdraw(0) }.to raise_error 'Please specify a positive amount'
     end
   end
 

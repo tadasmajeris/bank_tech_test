@@ -7,6 +7,7 @@ class Account
   end
 
   def deposit(amount)
+    raise_error_if_negative(amount)
     @transactions.push Transaction.new(amount)
   end
 
@@ -14,6 +15,7 @@ class Account
     if amount > balance
       raise "Insufficient funds. Current balance: #{balance}"
     end
+    raise_error_if_negative(amount)
     @transactions.push Transaction.new(-amount)
   end
 
@@ -27,6 +29,12 @@ class Account
       sum += transaction.amount
     end
     balance
+  end
+
+  private
+
+  def raise_error_if_negative(amount)
+    raise "Please specify a positive amount" if amount <= 0
   end
 
 end
