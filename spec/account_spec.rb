@@ -14,4 +14,14 @@ describe Account do
     end
   end
 
+  describe '#withdraw' do
+    before { subject.deposit(1000) }
+
+    it 'allows to withdraw money from account' do
+      subject.withdraw(400)
+      subject.withdraw(500)
+      expect(subject.balance).to eq 100
+    end
+  end
+
 end
