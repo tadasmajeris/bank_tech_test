@@ -22,6 +22,10 @@ describe Account do
       subject.withdraw(500)
       expect(subject.balance).to eq 100
     end
+
+    it 'throws an error when trying to withdraw more than the balance' do
+      expect { subject.withdraw(1001) }.to raise_error 'Insufficient funds. Current balance: 1000'
+    end
   end
 
 end
