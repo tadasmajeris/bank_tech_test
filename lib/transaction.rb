@@ -5,4 +5,8 @@ class Transaction
     @amount = amount
     @date = date
   end
+
+  def status
+    amount < 0 ? :debit : :credit
+  end
 end

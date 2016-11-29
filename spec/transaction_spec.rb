@@ -23,4 +23,18 @@ describe Transaction do
 
   end
 
+  describe '#status' do
+
+    it 'knows that its a debit if amount < 0' do
+      trans = Transaction.new(-500)
+      expect(trans.status).to eq :debit
+    end
+
+    it 'knows that its a credit if amount >= 0' do
+      trans = Transaction.new(500)
+      expect(trans.status).to eq :credit
+    end
+
+  end
+
 end
