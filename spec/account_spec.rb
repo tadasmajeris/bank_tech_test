@@ -51,4 +51,15 @@ describe Account do
     end
   end
 
+  describe '#print' do
+
+    it 'prints the balance statement in a nice table' do
+      today = Time.new.strftime("%d/%m/%Y")
+      subject.deposit(1000)
+      subject.deposit(2000)
+      subject.withdraw(500)
+      expect(subject.print).to eq "date       || credit || debit   || balance\n#{today} ||         || 500.00  || 2500.00\n#{today} || 2000.00 ||         || 3000.00\n#{today} || 1000.00 ||         || 1000.00\n"
+    end
+  end
+
 end

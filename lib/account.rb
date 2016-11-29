@@ -31,6 +31,10 @@ class Account
     balance
   end
 
+  def print
+    BalancePrinter.print_table(transactions)
+  end
+
   private
 
   def raise_error_if_negative(amount)

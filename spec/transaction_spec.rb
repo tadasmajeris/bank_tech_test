@@ -10,9 +10,10 @@ describe Transaction do
     end
 
     it 'is created with todays date' do
-      today = Date.new
+      today = Time.new.strftime("%d/%m/%Y")
       trans = Transaction.new(500)
-      expect(trans.date).to eq today
+      date = trans.date.strftime("%d/%m/%Y")
+      expect(date).to eq today
     end
 
   end
