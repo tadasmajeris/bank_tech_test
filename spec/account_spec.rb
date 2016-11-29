@@ -14,7 +14,7 @@ describe Account do
       expect(subject.balance).to eq 700
     end
 
-    it 'saves a transaction to history' do
+    it 'saves a transaction object to history' do
       subject.deposit(500)
       transactions = subject.transactions
       expect(transactions.length).to eq 1
@@ -24,6 +24,10 @@ describe Account do
 
   describe '#withdraw' do
     before { subject.deposit(1000) }
+
+    it 'saves the withdrawal transaction to history' do
+      expect { subject.withdraw(500) }.to change { subject.transactions.length }.by(1)
+    end
 
     it 'allows to withdraw money from account' do
       subject.withdraw(400)
