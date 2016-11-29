@@ -25,6 +25,7 @@ describe Account do
       expect { subject.deposit(-500) }.to raise_error 'Please specify a positive amount'
       expect { subject.deposit(0) }.to raise_error 'Please specify a positive amount'
     end
+
   end
 
   describe '#withdraw' do

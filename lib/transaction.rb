@@ -1,8 +1,10 @@
 class Transaction
+
   attr_reader :amount, :date
 
-  def initialize(amount, date = Date.new)
+  def initialize(amount)
     @amount = amount
-    @date = date
+    @date = DateTime.new
   end
+
 end
