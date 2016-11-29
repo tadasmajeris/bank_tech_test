@@ -1,20 +1,32 @@
+require_relative 'transaction'
+
 class Account
 
-  attr_reader :balance
-
   def initialize
-    @balance = 0
+    @transactions = []
   end
 
   def deposit(amount)
-    @balance += amount
+    @transactions.push Transaction.new(amount)
   end
 
   def withdraw(amount)
-    if amount > @balance
-      raise "Insufficient funds. Current balance: #{@balance}"
+    if amount > balance
+      raise "Insufficient funds. Current balance: #{balance}"
     end
-    @balance -= amount
+    @transactions.push Transaction.new(-amount)
+  end
+
+  def transactions
+    @transactions.dup
+  end
+
+  def balance
+    return 0 if @transactions.empty?
+    balance = @transactions.inject(0) do |sum, transaction|
+      sum += transaction.amount
+    end
+    balance
   end
 
 end

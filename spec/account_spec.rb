@@ -1,4 +1,5 @@
 require_relative '../lib/account'
+require_relative '../lib/transaction'
 
 describe Account do
 
@@ -11,6 +12,13 @@ describe Account do
       subject.deposit(500)
       subject.deposit(200)
       expect(subject.balance).to eq 700
+    end
+
+    it 'saves a transaction to history' do
+      subject.deposit(500)
+      transactions = subject.transactions
+      expect(transactions.length).to eq 1
+      expect(transactions.last).to be_kind_of(Transaction)
     end
   end
 
