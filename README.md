@@ -26,3 +26,15 @@ To run the tests:
 - Clone this repo by typing in Terminal: ```git clone https://github.com/tadasmajeris/bank_tech_test.git```
 - change to the directory: ```cd bank_tech_test```
 - run RSpec by typing in a command: ```rspec```
+
+To play with the code:
+----
+in ```irb``` or ```pry```:
+```
+require './lib/account'
+acc = Account.new
+acc.deposit 500
+acc.deposit 1000
+acc.withdraw 300
+acc.print
+```
