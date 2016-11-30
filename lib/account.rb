@@ -33,7 +33,7 @@ class Account
   end
 
   def print
-    BalancePrinter.print_table(transactions)
+    puts BalancePrinter.print_table(transactions)
   end
 
   private
