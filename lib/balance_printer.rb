@@ -1,7 +1,7 @@
 class BalancePrinter
 
   def self.print_table(transactions)
-    header = "date".ljust(11) + "|| credit".ljust(10) + "|| debit".ljust(11) + "|| balance\n"
+    header = "date".ljust(11) + "|| credit".ljust(11) + "|| debit".ljust(11) + "|| balance\n"
 
     ongoing_balance = 0
     row_array = []
